@@ -1,0 +1,146 @@
+/* ==== General Page Layout ==== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 900px;
+  max-width: 95%;
+}
+
+/* ==== Left Section (Form) ==== */
+.left-section {
+  flex: 1;
+  padding: 60px 50px;
+}
+
+.left-section h1 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.left-section p {
+  color: #666;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+/* ==== Right Section ==== */
+.right-section {
+  flex: 1;
+  background: linear-gradient(135deg, #070707, #767a77);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.right-section h2 {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* ==== Form Elements ==== */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 500;
+  margin-top: 10px;
+  color: #333;
+}
+
+input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  border-color: #000000;
+}
+
+/* ==== Buttons ==== */
+.btn {
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  margin-top: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #474747;
+}
+
+/* ==== Text Links ==== */
+.signup-text, .login-text {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.signup-text a, .login-text a {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signup-text a:hover, .login-text a:hover {
+  text-decoration: underline;
+}
+
+/* ==== Messages ==== */
+#errorMsg {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+#successMsg {
+  color: rgb(5, 113, 9);
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 90%;
+    height: auto;
+  }
+
+  .right-section {
+    padding: 30px 20px;
+  }
+
+  .left-section {
+    padding: 40px 20px;
+  }
+}

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker - Multi User</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/transactions.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-profile" id="headerProfile">
+
+    
+
+    <div class="profile-details">
+
+        <h3 id="profileNameDisplay">
+            Your Name
+        </h3>
+
+        <p id="profileEmailDisplay">
+            email@example.com
+        </p>
+
+    </div>
+
+    <button
+        class="profile-edit-btn"
+        onclick="openProfileModal()">
+
+        <i class="fas fa-user-edit"></i>
+
+    </button>
+
+</div>
+        <h1>Spend Smart</h1>
+        <div class="header-controls">
+            <div class="dropdown">Daily <i class="fas fa-chevron-down"></i></div>
+            <div class="date-picker">
+                <i class="fas fa-calendar"></i>
+                <span id="todayDate"></span>
+            </div>
+            <button class="export-btn" id ="exportBtn">
+                <i class="fas fa-download"></i>
+                Export
+            </button>
+        </div>
+    </div>
+    <div class="main-content">
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Monthly Income</h3>
+                    <button class="card-menu"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+                <div class="amount income-amount">₹0.00</div>
+                <div class="change"><i class="fas fa-arrow-up"></i> 0 % vs Last month</div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Monthly Expenses</h3>
+                    <button class="card-menu"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+                <div class="amount expense-amount">₹0.00</div>
+                <div class="change"><i class="fas fa-arrow-up"></i> 0 % vs Last month</div>
+            </div>
+        </div>
+        <div class="chart-section">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Overview</h3>
+                    <div style="display: flex; gap: 1rem;">
+                        <select class="dropdown" id="yearlyDropdown">
+                            <option value="yearly">Yearly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="weekly">Weekly</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="chart-container" id="monthlyBarChart"></div>
+                <div class="chart-labels">
+                    <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+                    <span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">All Expenses</h3>
+                    <button class="card-menu"><i class="fas fa-ellipsis-h"></i></button>
+                </div>
+                <div style="font-size: 0.95rem; color: #6b7280; margin-bottom: 1rem;">Spending breakdown by category</div>
+                <div class="total-expenses" id="totalExpenses" style="font-size: 2.5rem; font-weight: 800; color: #1e293b; margin-bottom: 1rem;">₹0.00</div>
+                <div class="period-tabs" style="display: flex; gap: 2rem; margin-bottom: 1rem;">
+                    <span class="period-tab" id="dailyTab">Daily</span>
+                    <span class="period-tab" id="weeklyTab">Weekly</span>
+                    <span class="period-tab active" id="monthlyTab">Monthly</span>
+                </div>
+                <div class="period-amounts" style="display: flex; justify-content: space-between; color: #6b7280; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem;">
+                    <span>Daily</span>
+                    <span>Weekly</span>
+                    <span>Monthly</span>
+                </div>
+                <div class="period-values" id="periodValues" style="display: flex; justify-content: space-between; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">
+                    <span>₹0</span>
+                    <span>₹0</span>
+                    <span>₹0</span>
+                </div>
+                <div class="color-bar" style="height: 6px; background: linear-gradient(to right, #ea580c, #f59e0b, #eab308, #10b981); border-radius: 3px; margin-bottom: 1rem;"></div>
+                <ul class="expense-categories" id="expenseCategories" style="list-style: none;"></ul>
+            </div>
+        </div>
+        <div class="card transactions-section">
+            <div class="card-header transaction-header">
+                <h3 class="card-title">Recent Transactions</h3>
+                <input
+                    type="text"
+                    id="searchTransaction"
+                    class="search-box"
+                    placeholder="🔍 Search transactions">
+
+            </div>
+            <table class="transactions-table">
+                <thead>
+                    <tr>
+                        <th onclick="sortTransactions('date')">📅Date <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTransactions('category')">🍔Category <i class="fas fa-sort"></i></th>
+                        <th onclick="sortTransactions('amount')">💰Amount <i class="fas fa-sort"></i></th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="add-buttons">
+        <button class="fab fab-income" onclick="openIncomeModal()" title="Add Income">
+            <i class="fas fa-plus"></i>
+        </button>
+        <button class="fab fab-expense" onclick="openExpenseModal()" title="Add Expense">
+            <i class="fas fa-minus"></i>
+        </button>
+    </div>
+
+    <!-- Income Modal -->
+    <div id="incomeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add Income</h2>
+                <button class="close-btn" onclick="closeModal('incomeModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="incomeForm">
+                    <div class="form-group">
+                        <label class="form-label">Amount</label>
+                        <input type="number" class="form-input" id="incomeAmount" placeholder="Enter amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" id="incomeCategory" required>
+                            <option value="">Select category</option>
+                            <option value="scholarship">Scholarship</option>
+                            <option value="parttime">Part Time Job</option>
+                            <option value="pocket">Pocket Money</option>
+                            <option value="investment">Investment</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" class="form-input" id="incomeDescription" placeholder="Enter description">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Date</label>
+                        <input type="date" class="form-input" id="incomeDate" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('incomeModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="addIncome()">Add Income</button>
+            </div>
+        </div>
+    </div>
+    <!-- Expense Modal -->
+    <div id="expenseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add Expense</h2>
+                <button class="close-btn" onclick="closeModal('expenseModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="expenseForm">
+                    <div class="form-group">
+                        <label class="form-label">Amount</label>
+                        <input type="number" class="form-input" id="expenseAmount" placeholder="Enter amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" id="expenseCategory" required>
+                            <option value="">Select category</option>
+                            <option value="food">Food & Health</option>
+                            <option value="entertainment">Entertainment</option>
+                            <option value="shopping">Shopping</option>
+                            <option value="investment">Investment</option>
+                            <option value="transport">Transport</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <input type="text" class="form-input" id="expenseDescription" placeholder="Enter description">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Date</label>
+                        <input type="date" class="form-input" id="expenseDate" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('expenseModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="addExpense()">Add Expense</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Account Modal -->
+<div id="profileModal" class="modal">
+    <div class="modal-content account-modal">
+
+        <div class="modal-header">
+            <h2 class="modal-title">Account</h2>
+
+            <button
+                class="close-btn"
+                onclick="closeModal('profileModal')">
+                &times;
+            </button>
+        </div>
+
+        <div class="account-body">
+
+            <h3 id="accountName">Your Name</h3>
+
+            <p id="accountEmail">
+                email@example.com
+            </p>
+
+            <button
+                class="logout-btn"
+                onclick="logoutUser()">
+
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+
+            </button>
+
+        </div>
+
+    </div>
+</div>
+    <div id="chartTooltip" class="chart-tooltip" style="display:none; position:absolute; z-index:1002;"></div>
+    <script src="js/script.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/transactions.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/export.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

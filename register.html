@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Expense Tracker</title>
+  <link rel="stylesheet" href="css/register.css">
+  <link rel="stylesheet" href="css/dark.css">
+</head>
+<body>
+  <div class="container">
+    <div class="left-section">
+      <h1>Create Your Account</h1>
+      <p>Join us and start tracking your expenses today!</p>
+
+      <form id="signupForm">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter your email" required>
+
+        <label for="signupPassword">Password</label>
+        <input type="password" id="signupPassword" placeholder="Password" required>
+
+        <button id="signupBtn" class="btn">Sign Up</button>
+
+        <p class="login-text">
+          Already have an account? <a href="login.html">Login</a>
+        </p>
+      </form>
+
+      <p id="errorMsg" style="color:red;"></p>
+      <p id="successMsg" style="color:green;"></p>
+    </div>
+
+    <div class="right-section">
+      <h2>Expense Tracker</h2>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("signupPassword").value.trim(); // ✅ Fixed line
+      const errorMsg = document.getElementById("errorMsg");
+      const successMsg = document.getElementById("successMsg");
+
+      errorMsg.textContent = "";
+      successMsg.textContent = "";
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      // Check if email already exists
+      const existingUser = users.find(user => user.email === email);
+
+      if (existingUser) {
+        errorMsg.textContent = "Email already registered. Please log in.";
+        return;
+      }
+
+      // Add new user with empty expenses array
+      const newUser = { name, email, password, expenses: [] };
+      users.push(newUser);
+
+      localStorage.setItem("users", JSON.stringify(users));
+
+      successMsg.textContent = "Account created successfully! Redirecting to login...";
+      
+      setTimeout(() => {
+        window.location.href = "login.html";
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

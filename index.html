@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expense Tracker</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/dark.css">
+  <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="icons/icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Expense Tracker">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<!-- <link rel="manifest" href="/expense/manifest.json"> -->
+
+</head>
+<body>
+  <div class="container">
+    <!-- Left Section -->
+    <div class="left-section">
+      <h1>Welcome to <span>Expense Tracker</span></h1>
+      <p>Track your spending, save money, and manage your budget easily.</p>
+      <a href="login.html" class="btn">Get Started</a>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+      <!-- <img src="https://paperit.in/cdn/shop/products/IMG_0572.jpg?v=1670588570&width=3375" alt="Expense Tracker" /> -->
+       <img src="https://paperit.in/cdn/shop/products/IMG_0572.jpg?v=1670588570&width=3375" alt="Pic">
+      <h2 class="image-text">Expense Tracker</h2>
+    </div>
+  </div>
+  <script>
+  // Register service worker
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then(reg => {
+          console.log('Service worker registered.', reg);
+        })
+        .catch(err => console.error('Service worker registration failed:', err));
+    });
+  }
+</script>
+
+</body>
+</html>

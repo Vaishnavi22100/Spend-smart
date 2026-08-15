@@ -1,0 +1,63 @@
+:root{
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --text:#1e293b;
+    --border:#e2e8f0;
+    --primary:#2563eb;
+}
+
+body.dark{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#f8fafc;
+    --border:#334155;
+    --primary:#60a5fa;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    transition:0.35s ease;
+}
+
+.header,
+.card,
+.container,
+.left-section,
+.right-section,
+.modal-content{
+    transition:0.35s ease;
+}
+
+body.dark .header,
+body.dark .card,
+body.dark .container,
+body.dark .left-section,
+body.dark .right-section,
+body.dark .modal-content{
+    background:var(--card);
+    color:var(--text);
+}
+
+body.dark input,
+body.dark select{
+    background:#334155;
+    color:white;
+    border:1px solid #475569;
+}
+
+.theme-btn{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:50%;
+    cursor:pointer;
+    background:var(--primary);
+    color:white;
+    font-size:18px;
+    transition:.3s;
+}
+
+.theme-btn:hover{
+    transform:rotate(180deg) scale(1.08);
+}
