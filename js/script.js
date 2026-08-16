@@ -2,6 +2,7 @@ let transactions = [];
 let monthlyIncome = 0;
 let monthlyExpenses = 0;
 let selectedExpensePeriod = 'Monthly';
+let editingTransactionId = null;
 
 // Utility for week calculation
 function getWeekNumber(d) {
