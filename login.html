@@ -31,7 +31,7 @@
     </div>
 
     <div class="right-section">
-      <h2>Expense Tracker</h2>
+      <h2>Spend Smart</h2>
     </div>
   </div>
 
@@ -50,11 +50,24 @@
       );
 
       if (validUser) {
-        localStorage.setItem("currentUser", JSON.stringify(validUser));
-        window.location.href = "index.html";
-      } else {
-        errorMsg.textContent = "Invalid email or password!";
-      }
+
+    // Save the logged-in user
+    localStorage.setItem(
+        "currentUser",
+        JSON.stringify(validUser)
+    );
+
+    // Save the user's email for the dashboard
+    localStorage.setItem(
+        "activeUser",
+        validUser.email.toLowerCase()
+    );
+
+    window.location.href = "dashboard.html";
+
+} else {
+    errorMsg.textContent = "Invalid email or password!";
+}
     });
   </script>
 </body>
