@@ -61,3 +61,99 @@ body.dark select{
 .theme-btn:hover{
     transform:rotate(180deg) scale(1.08);
 }
+/* =========================
+   DARK MODE TEXT FIXES
+   ========================= */
+
+body.dark .header,
+body.dark .header h1,
+body.dark .header-profile,
+body.dark .profile-details,
+body.dark .profile-details h3,
+body.dark .profile-details p {
+    color: #f8fafc;
+}
+
+body.dark .header-profile {
+    background: #1e293b;
+}
+
+body.dark .dropdown,
+body.dark .date-picker,
+body.dark .filter-btn {
+    background: #334155;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+body.dark .card-title,
+body.dark .income-amount,
+body.dark .expense-amount,
+body.dark .total-expenses,
+body.dark .card,
+body.dark .card-header,
+body.dark .overview,
+body.dark .period-amounts,
+body.dark .period-values,
+body.dark .expense-category {
+    color: #f8fafc;
+}
+
+body.dark .card-menu,
+body.dark .action-btn,
+body.dark .chart-labels,
+body.dark .period-tab,
+body.dark .period-amounts {
+    color: #cbd5e1;
+}
+
+body.dark .period-tab.active {
+    color: #f8fafc;
+    border-bottom-color: #f8fafc;
+}
+
+body.dark .chart-container {
+    background: #f8fafc;
+}
+
+body.dark .chart-tooltip {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+body.dark .chart-tooltip .month-label {
+    color: #f8fafc;
+}
+
+body.dark .status-success {
+    background: #14532d;
+    color: #86efac;
+}
+
+body.dark .modal-content {
+    color: #f8fafc;
+}
+
+body.dark .modal-header,
+body.dark .modal-footer {
+    border-color: #475569;
+}
+
+body.dark .form-label,
+body.dark .modal-title {
+    color: #f8fafc;
+}
+
+body.dark .btn-secondary {
+    background: #334155;
+    color: #f8fafc;
+}
+
+body.dark .account-body h3 {
+    color: #f8fafc;
+}
+
+body.dark .account-body p {
+    color: #cbd5e1;
+}
