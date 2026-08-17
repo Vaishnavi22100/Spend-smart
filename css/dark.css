@@ -157,3 +157,60 @@ body.dark .account-body h3 {
 body.dark .account-body p {
     color: #cbd5e1;
 }
+/* =========================
+   TRANSACTIONS TABLE - DARK MODE
+   ========================= */
+
+body.dark .transactions-table {
+    background: #1e293b;
+}
+
+body.dark .transactions-table thead {
+    background: #1e293b;
+}
+
+body.dark .transactions-table th {
+    color: #e2e8f0 !important;
+    background: #1e293b !important;
+    border-bottom: 1px solid #475569 !important;
+}
+
+body.dark .transactions-table td {
+    color: #e2e8f0 !important;
+    background: #1e293b !important;
+    border-bottom: 1px solid #334155 !important;
+}
+
+body.dark .transactions-table tbody tr {
+    background: #1e293b !important;
+}
+
+body.dark .transactions-table tbody tr:hover {
+    background: #263449 !important;
+}
+
+/* Keep income and expense amounts visible */
+body.dark .transactions-table td[style*="#10b981"] {
+    color: #34d399 !important;
+}
+
+body.dark .transactions-table td[style*="#ea580c"] {
+    color: #fb923c !important;
+}
+
+/* Status */
+body.dark .transactions-table .status-success {
+    background: #14532d !important;
+    color: #86efac !important;
+}
+
+/* Action buttons */
+body.dark .transactions-table .edit-btn {
+    background: #2563eb;
+    color: white;
+}
+
+body.dark .transactions-table .delete-btn {
+    background: #dc2626;
+    color: white;
+}
